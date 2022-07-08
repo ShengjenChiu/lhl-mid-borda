@@ -36,6 +36,45 @@ The following steps are only for _one_ of the group members to perform.
   - It runs through each of the files, in order, and executes them against the database. 
   - Note: you will lose all newly created (test) data each time this is run, since the schema files will tend to `DROP` the tables and recreate them.
 
+
+#####
+
+### User Story
+* a user create a poll with multiple choices
+ -each choice have 
+  --a title
+  --optional description
+ -the creator must enter an email  //name?
+
+* when (a poll is finished being created) 
+ -the user is given two links: 
+  --an administrative link (which lets them access the results) and 
+  --a submission link (which the user sends to their friends)
+ -the links are sent to the creator via email (using mailgun)
+
+* when (a user visits the poll he created thruough the submission_link) 
+  -see a list of the choices for that poll 
+   --they enter their name if required
+
+* the user
+  -rank the choices (by drag and drop, or some other method) and 
+  -then submits the poll
+
+* each time a submission is received, 
+  -the creator is notified with an email 
+   which includes 
+  --the administrative link and 
+  --a link to the results
+
+* the results are ranked using 
+    the Borda Count method: https://en.wikipedia.org/wiki/Borda_count
+
+note: 
+1. The only way to access the polls or see the results is via administrative links
+2. This app does not follow the typical user authentication process: voters don't need to register or log in.
+
+
+
 ## Dependencies
 
 - Node 10.x or above
